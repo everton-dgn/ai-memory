@@ -11,6 +11,15 @@ version in [`docs/changelog/`](docs/changelog/):
 
 ## [Unreleased]
 
+### Security
+
+- Updated `tokio` 1.52.3 → 1.53.3 for
+  [RUSTSEC-2026-0386](https://rustsec.org/advisories/RUSTSEC-2026-0386), in
+  which the safe `AsyncFd` constructors accept a file descriptor the caller
+  does not own. ai-memory's own code never constructs an `AsyncFd`; the
+  update clears the advisory that fails `cargo deny`. The importer, relay and
+  wiki sync companions take the same bump.
+
 ### Fixed
 
 - `ai-memory user list` and `ai-memory api-key list` now size their columns
